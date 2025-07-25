@@ -50,3 +50,7 @@
 - include_tasks: service.yml
   tags:
     - solana_run
+
+- include_tasks: sysctl.yml
+  tags:
+    - solana_optimize

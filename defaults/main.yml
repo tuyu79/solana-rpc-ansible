@@ -20,7 +20,7 @@ solana_root: /solana
 
 solana_ledger_location: /solana/ledger
 
-solana_accounts_location: /solana/ledger/accounts
+solana_accounts_location: /solana/accounts
 
 solana_authorized_voters: []
 
