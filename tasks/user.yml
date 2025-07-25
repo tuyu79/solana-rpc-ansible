@@ -14,7 +14,7 @@
   changed_when: false
 
 # Get solana uid/gid
-- name: register uid of solana user
+- name: register gid of solana user
   command: id -g solana
   register: solana_gid
   changed_when: false

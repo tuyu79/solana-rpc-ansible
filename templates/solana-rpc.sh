@@ -8,7 +8,7 @@ set -o pipefail
 find "{{ solana_ledger_location }}" -name 'snapshot-*' -size 0 -print -exec rm {} \; || true
 
 # Start solana rpc node, intended to be used with journalctl/systemctl. Logs will go to journalctl.
-exec /home/solana/.local/share/solana/install/active_release/bin/solana-validator \
+exec /home/solana/.local/share/solana/install/active_release/bin/agave-validator \
   --identity {{ solana_public_key }} \
 {% if solana_gossip_host is defined and solana_gossip_host|length > 0 %}
   --gossip-host {{ solana_gossip_host }}
@@ -40,9 +40,7 @@ exec /home/solana/.local/share/solana/install/active_release/bin/solana-validato
   --no-port-check \
   --no-voting \
 {% if solana_full_rpc_api %}
-{%   if (solana_version == "stable" or (solana_version is version('1.9', '>=') and solana_version is version('1.9.6', '>=')) or (solana_version is version('1.9', '<') and solana_version is version('1.8.15', '>='))) %}
   --full-rpc-api \
-{%  endif %}
 {% endif %}
 {% if solana_trusted_validators|length > 0 %}
   --no-untrusted-rpc \
@@ -52,6 +50,7 @@ exec /home/solana/.local/share/solana/install/active_release/bin/solana-validato
   --enable-cpi-and-log-storage \
   --enable-rpc-transaction-history \
 {% endif %}
+  --enable-extended-tx-metadata-storage \
   --account-index {{ solana_account_index }} \
   --expected-genesis-hash {{ solana_genesis_hash }} \
 {% if solana_rpc_threads is defined and solana_rpc_threads > 0 %}

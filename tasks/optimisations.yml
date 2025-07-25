@@ -1,9 +1,9 @@
 # CPU governor settings, can be disabled with cpu_governor = bios
-- name: disable ondemand governor (get performance governor)
-  systemd:
-    name: ondemand
-    enabled: false
-    state: stopped
+#- name: disable ondemand governor (get performance governor)
+#  systemd:
+#    name: ondemand
+#    enabled: false
+#    state: stopped
 
 - name: ensure cpu governor is set
   copy:

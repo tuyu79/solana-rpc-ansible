@@ -6,7 +6,7 @@
     mode: 0755
     owner: root
     group: root
-    checksum: "{{ rustup_checksum }}"
+#    checksum: "{{ rustup_checksum }}"
 
 - name: install rust
   command: "/usr/local/sbin/rustup-install.sh -y"

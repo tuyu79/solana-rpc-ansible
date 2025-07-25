@@ -6,47 +6,47 @@
     - "{{ solana_network | lower }}-default.yml"
 
 # Install dependencies
-- include: dependencies.yml
+- include_tasks: dependencies.yml
   tags:
     - solana_install
 
 
 # Set up a solana user
-- include: user.yml
+- include_tasks: user.yml
   tags:
     - solana_configure
     - solana_install
     - solana_run
 
 # Install  rust
-- include: rust.yml
+- include_tasks: rust.yml
   when: install_rust is defined and install_rust
   tags:
     - solana_install
 
 # Install solana
-- include: install.yml
+- include_tasks: install.yml
   tags:
     - solana_install
 
 
 # Set cpu optimisations
-- include: optimisations.yml
+- include_tasks: optimisations.yml
   tags:
     - solana_configure
 
 # Setup RPC identity
-- include: identity.yml
+- include_tasks: identity.yml
   tags:
     - solana_configure
 
 # Setup bigtable
-- include: bigtable.yml
+- include_tasks: bigtable.yml
   tags:
     - solana_configure
 
 
 # Setup solana service files
-- include: service.yml
+- include_tasks: service.yml
   tags:
     - solana_run

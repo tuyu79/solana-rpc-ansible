@@ -1,14 +1,15 @@
 - name: download solana-installer
   get_url:
-    url: "https://raw.githubusercontent.com/solana-labs/solana/{{ solana_installer_version }}/install/solana-install-init.sh"
+    url: "https://release.anza.xyz/{{ solana_installer_version }}/install"
     dest: /usr/local/sbin/solana-install-init.sh
+    force: yes
     mode: 0755
     owner: root
     group: root
-    checksum: "{{ solana_checksums[solana_installer_version] }}"
+#    checksum: "{{ solana_checksums[solana_installer_version] }}"
 
 - name: install solana
-  command: "/usr/local/sbin/solana-install-init.sh {{ solana_version }}"
+  shell: "/usr/local/sbin/solana-install-init.sh"
   args:
     chdir: /home/solana/
   become: true
@@ -19,7 +20,7 @@
 - name: debug
   debug: var=install_output
 
-- name: ensure solana storage directories are avaiable
+- name: ensure solana storage directories are available
   file:
     path: "{{ item }}"
     owner: solana
@@ -34,11 +35,11 @@
     - "{{ solana_ledger_location }}/rocksdb"
     - "{{ solana_accounts_location }}"
 
-- name: clone solana src
-  git:
-    repo: https://github.com/solana-labs/solana.git
-    dest: /home/solana/src/solana
-    clone: true
-    version: "{{ solana_source_version }}"
-  become: true
-  become_user: solana
+#- name: clone solana src
+#  git:
+#    repo: https://github.com/solana-labs/solana.git
+#    dest: /home/solana/src/solana
+#    clone: true
+#    version: "{{ solana_source_version }}"
+#  become: true
+#  become_user: solana
