@@ -1,9 +1,0 @@
-- name: apply sysctl vars
-  sysctl:
-    name: "{{ item.key }}"
-    value: "{{ item.value }}"
-    sysctl_file: /etc/sysctl.d/99-solana-optimisations.conf
-    state: present
-    reload: yes
-  loop: "{{ sysctl_optimisations | dict2items }}"
-  become: yes
