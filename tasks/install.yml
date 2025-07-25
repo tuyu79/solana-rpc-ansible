@@ -30,16 +30,16 @@
   with_items:
     - "/home/solana/bin"
     - "/home/solana/src"
+    - "/home/solana/geyser"
     - "{{ solana_root }}"
     - "{{ solana_ledger_location }}"
     - "{{ solana_ledger_location }}/rocksdb"
     - "{{ solana_accounts_location }}"
 
-#- name: clone solana src
-#  git:
-#    repo: https://github.com/solana-labs/solana.git
-#    dest: /home/solana/src/solana
-#    clone: true
-#    version: "{{ solana_source_version }}"
-#  become: true
-#  become_user: solana
+- name: clone solana src
+  git:
+    repo: https://github.com/rpcpool/yellowstone-grpc.git
+    dest: /home/solana/geyser
+    clone: true
+  become: true
+  become_user: solana

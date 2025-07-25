@@ -39,6 +39,7 @@ exec /home/solana/.local/share/solana/install/active_release/bin/agave-validator
     --entrypoint entrypoint5.mainnet-beta.solana.com:8001 \
     --expected-genesis-hash 5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d \
     --wal-recovery-mode skip_any_corrupted_record \
-    --limit-ledger-size 100000000
+    --limit-ledger-size 100000000 \
+    --geyser-plugin-config /home/solana/geyser/yellowstone-grpc/yellowstone-grpc-geyser/config.json
 
 

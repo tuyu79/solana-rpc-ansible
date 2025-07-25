@@ -16,32 +16,32 @@
     groups: systemd-journal
     append: true
 
-- name: ensure solana directories exists
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: 0755
-    owner: root
-    group: root
-  with_items:
-    - "/etc/systemd/system/user@.service.d/"
-    - "/etc/systemd/user.conf.d/"
-
-- name: install user service override
-  template:
-    src: user-override.conf
-    dest: /etc/systemd/system/user@.service.d/override.conf
-    owner: root
-    group: root
-    mode: 0644
-
-- name: install user override values
-  template:
-    src: user-conf-d-override.conf
-    dest: /etc/systemd/user.conf.d/override.conf
-    owner: root
-    group: root
-    mode: 0644
+#- name: ensure solana directories exists
+#  file:
+#    path: "{{ item }}"
+#    state: directory
+#    mode: 0755
+#    owner: root
+#    group: root
+#  with_items:
+#    - "/etc/systemd/system/user@.service.d/"
+#    - "/etc/systemd/user.conf.d/"
+#
+#- name: install user service override
+#  template:
+#    src: user-override.conf
+#    dest: /etc/systemd/system/user@.service.d/override.conf
+#    owner: root
+#    group: root
+#    mode: 0644
+#
+#- name: install user override values
+#  template:
+#    src: user-conf-d-override.conf
+#    dest: /etc/systemd/user.conf.d/override.conf
+#    owner: root
+#    group: root
+#    mode: 0644
 
 - name: ensure systemd user dir is available
   file:

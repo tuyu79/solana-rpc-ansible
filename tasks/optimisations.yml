@@ -20,7 +20,7 @@
   become_user: root
   when: cpu_governor != "bios"
 
-# Sysctl settings
+# Sysctl settings, default write to file /etc/sysctl.d/99-sysctl.conf
 - name: ensure sysctl is set to sufficiently high value
   sysctl:
     name: "{{ item.key }}"
